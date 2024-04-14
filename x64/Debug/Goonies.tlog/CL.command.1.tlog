@@ -1,0 +1,26 @@
+﻿^C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\AABB.CPP
+/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"X64\DEBUG\\" /Fd"X64\DEBUG\VC142.PDB" /external:W3 /Gd /TP /FC C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\AABB.CPP
+^C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\ENTITY.CPP
+/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"X64\DEBUG\\" /Fd"X64\DEBUG\VC142.PDB" /external:W3 /Gd /TP /FC C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\ENTITY.CPP
+^C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\GLOBALS.CPP
+/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"X64\DEBUG\\" /Fd"X64\DEBUG\VC142.PDB" /external:W3 /Gd /TP /FC C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\GLOBALS.CPP
+^C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\RENDERCOMPONENT.CPP
+/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"X64\DEBUG\\" /Fd"X64\DEBUG\VC142.PDB" /external:W3 /Gd /TP /FC C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\RENDERCOMPONENT.CPP
+^C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\RESOURCEMANAGER.CPP
+/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"X64\DEBUG\\" /Fd"X64\DEBUG\VC142.PDB" /external:W3 /Gd /TP /FC C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\RESOURCEMANAGER.CPP
+^C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\SPRITE.CPP
+/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"X64\DEBUG\\" /Fd"X64\DEBUG\VC142.PDB" /external:W3 /Gd /TP /FC C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\SPRITE.CPP
+^C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\STATICIMAGE.CPP
+/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"X64\DEBUG\\" /Fd"X64\DEBUG\VC142.PDB" /external:W3 /Gd /TP /FC C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\STATICIMAGE.CPP
+^C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\PLAYER.CPP
+/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"X64\DEBUG\\" /Fd"X64\DEBUG\VC142.PDB" /external:W3 /Gd /TP /FC C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\PLAYER.CPP
+^C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\TILEMAP.CPP
+/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"X64\DEBUG\\" /Fd"X64\DEBUG\VC142.PDB" /external:W3 /Gd /TP /FC C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\TILEMAP.CPP
+^C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\GAME.CPP
+/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"X64\DEBUG\\" /Fd"X64\DEBUG\VC142.PDB" /external:W3 /Gd /TP /FC C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\GAME.CPP
+^C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\OBJECT.CPP
+/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"X64\DEBUG\\" /Fd"X64\DEBUG\VC142.PDB" /external:W3 /Gd /TP /FC C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\OBJECT.CPP
+^C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\MAIN.CPP
+/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"X64\DEBUG\\" /Fd"X64\DEBUG\VC142.PDB" /external:W3 /Gd /TP /FC C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\MAIN.CPP
+^C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\SCENE.CPP
+/c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"X64\DEBUG\\" /Fd"X64\DEBUG\VC142.PDB" /external:W3 /Gd /TP /FC C:\USERS\PAUGS3\DOWNLOADS\P6-VIKINGS\VIKINGS\SRC\SCENE.CPP

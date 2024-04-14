@@ -23,7 +23,7 @@ AppStatus Player::Initialise()
 	const int n = PLAYER_FRAME_SIZE;
 
 	ResourceManager& data = ResourceManager::Instance();
-	if (data.LoadTexture(Resource::IMG_PLAYER, "images/eric.png") != AppStatus::OK)
+	if (data.LoadTexture(Resource::IMG_PLAYER, "images/sloth.png") != AppStatus::OK)
 	{
 		return AppStatus::ERROR;
 	}
@@ -39,40 +39,34 @@ AppStatus Player::Initialise()
 	sprite->SetNumberAnimations((int)PlayerAnim::NUM_ANIMATIONS);
 	
 	sprite->SetAnimationDelay((int)PlayerAnim::IDLE_RIGHT, ANIM_DELAY);
-	sprite->AddKeyFrame((int)PlayerAnim::IDLE_RIGHT, { 0, 0, n, n });
+	sprite->AddKeyFrame((int)PlayerAnim::IDLE_RIGHT, { 0, n+1, n/2, n });
 	sprite->SetAnimationDelay((int)PlayerAnim::IDLE_LEFT, ANIM_DELAY);
-	sprite->AddKeyFrame((int)PlayerAnim::IDLE_LEFT, { 0, 0, -n, n });
+	sprite->AddKeyFrame((int)PlayerAnim::IDLE_LEFT, { 0, n+1, -n/2, n });
 
 	sprite->SetAnimationDelay((int)PlayerAnim::WALKING_RIGHT, ANIM_DELAY);
-	for (i = 0; i < 8; ++i)
-		sprite->AddKeyFrame((int)PlayerAnim::WALKING_RIGHT, { (float)i*n, 4*n, n, n });
+	for (i = 1; i < 3; ++i)
+		sprite->AddKeyFrame((int)PlayerAnim::WALKING_RIGHT, { (float)8+i*n, n+1, n, n });
 	sprite->SetAnimationDelay((int)PlayerAnim::WALKING_LEFT, ANIM_DELAY);
-	for (i = 0; i < 8; ++i)
-		sprite->AddKeyFrame((int)PlayerAnim::WALKING_LEFT, { (float)i*n, 4*n, -n, n });
+	for (i = 1; i < 3; ++i)
+		sprite->AddKeyFrame((int)PlayerAnim::WALKING_LEFT, { (float)8+i*n, n+1, -n, n });
 
 	sprite->SetAnimationDelay((int)PlayerAnim::FALLING_RIGHT, ANIM_DELAY);
-	sprite->AddKeyFrame((int)PlayerAnim::FALLING_RIGHT, { 2*n, 5*n, n, n });
-	sprite->AddKeyFrame((int)PlayerAnim::FALLING_RIGHT, { 3*n, 5*n, n, n });
+	sprite->AddKeyFrame((int)PlayerAnim::FALLING_RIGHT, { 0, n+1, n/2, n });
+	sprite->AddKeyFrame((int)PlayerAnim::FALLING_RIGHT, { 0, n+1, n/2, n });
 	sprite->SetAnimationDelay((int)PlayerAnim::FALLING_LEFT, ANIM_DELAY);
-	sprite->AddKeyFrame((int)PlayerAnim::FALLING_LEFT, { 2*n, 5*n, -n, n });
-	sprite->AddKeyFrame((int)PlayerAnim::FALLING_LEFT, { 3*n, 5*n, -n, n });
+	sprite->AddKeyFrame((int)PlayerAnim::FALLING_LEFT, { 0, n + 1, -n / 2, n });
+	sprite->AddKeyFrame((int)PlayerAnim::FALLING_LEFT, { 0, n + 1, -n / 2, n });
 
 	sprite->SetAnimationDelay((int)PlayerAnim::JUMPING_RIGHT, ANIM_DELAY);
-	sprite->AddKeyFrame((int)PlayerAnim::JUMPING_RIGHT, { 0, 5*n, n, n });
+	sprite->AddKeyFrame((int)PlayerAnim::JUMPING_RIGHT, { 0, n*2+1, n, n });
 	sprite->SetAnimationDelay((int)PlayerAnim::JUMPING_LEFT, ANIM_DELAY);
-	sprite->AddKeyFrame((int)PlayerAnim::JUMPING_LEFT, { 0, 5*n, -n, n });
-	sprite->SetAnimationDelay((int)PlayerAnim::LEVITATING_RIGHT, ANIM_DELAY);
-	sprite->AddKeyFrame((int)PlayerAnim::LEVITATING_RIGHT, { n, 5*n, n, n });
-	sprite->SetAnimationDelay((int)PlayerAnim::LEVITATING_LEFT, ANIM_DELAY);
-	sprite->AddKeyFrame((int)PlayerAnim::LEVITATING_LEFT, { n, 5*n, -n, n });
+	sprite->AddKeyFrame((int)PlayerAnim::JUMPING_LEFT, { 0, n*2+1, -n, n });
 
 	sprite->SetAnimationDelay((int)PlayerAnim::CLIMBING, ANIM_LADDER_DELAY);
-	for (i = 0; i < 4; ++i)
-		sprite->AddKeyFrame((int)PlayerAnim::CLIMBING, { (float)i * n, 6 * n, n, n });
-	sprite->SetAnimationDelay((int)PlayerAnim::CLIMBING_PRE_TOP, ANIM_DELAY);
-	sprite->AddKeyFrame((int)PlayerAnim::CLIMBING_PRE_TOP, { 4 * n, 6 * n, n, n });
-	sprite->SetAnimationDelay((int)PlayerAnim::CLIMBING_TOP, ANIM_DELAY);
-	sprite->AddKeyFrame((int)PlayerAnim::CLIMBING_TOP, { 5 * n, 6 * n, n, n });
+	for (i = 0; i < 2; ++i)
+		sprite->AddKeyFrame((int)PlayerAnim::CLIMBING, { (float)i * 10, 0, 10, n+1 });
+
+
 		
 	sprite->SetAnimation((int)PlayerAnim::IDLE_RIGHT);
 
@@ -330,22 +324,8 @@ void Player::LogicJumping()
 		}
 		else
 		{
-			//Jumping is represented with 3 different states
-			if (IsAscending())
-			{
-				if (IsLookingRight())	SetAnimation((int)PlayerAnim::JUMPING_RIGHT);
-				else					SetAnimation((int)PlayerAnim::JUMPING_LEFT);
-			}
-			else if (IsLevitating())
-			{
-				if (IsLookingRight())	SetAnimation((int)PlayerAnim::LEVITATING_RIGHT);
-				else					SetAnimation((int)PlayerAnim::LEVITATING_LEFT);
-			}
-			else if (IsDescending())
-			{
-				if (IsLookingRight())	SetAnimation((int)PlayerAnim::FALLING_RIGHT);
-				else					SetAnimation((int)PlayerAnim::FALLING_LEFT);
-			}
+			if (IsLookingRight())	SetAnimation((int)PlayerAnim::JUMPING_RIGHT);
+			else					SetAnimation((int)PlayerAnim::JUMPING_LEFT);
 		}
 		//We check ground collision when jumping down
 		if (dir.y >= 0)

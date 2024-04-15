@@ -10,7 +10,7 @@
 #define PLAYER_PHYSICAL_HEIGHT	28
 
 //Horizontal speed and vertical speed while falling down
-#define PLAYER_SPEED			2
+#define PLAYER_SPEED			1
 
 //Vertical speed while on a ladder
 #define PLAYER_LADDER_SPEED		1
@@ -19,7 +19,7 @@
 #define ANIM_LADDER_DELAY		(2*ANIM_DELAY)
 
 //When jumping, initial jump speed and maximum falling speed
-#define PLAYER_JUMP_FORCE		10
+#define PLAYER_JUMP_FORCE		6
 
 //Frame delay for updating the jump velocity
 #define PLAYER_JUMP_DELAY		2

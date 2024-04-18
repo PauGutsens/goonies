@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "Enemy.h"
 #include "Sprite.h"
 #include "TileMap.h"
 #include "Globals.h"
@@ -19,7 +19,7 @@ Enemy::~Enemy()
 
 }
 
-AppStatus Player::Initialise()
+AppStatus Enemy::Initialise()
 
 {
 
@@ -47,7 +47,7 @@ AppStatus Player::Initialise()
 
 	{
 
-		LOG("Failed to allocate memory for player sprite");
+		LOG("Failed to allocate memory for Enemy sprite");
 
 		return AppStatus::ERROR;
 
@@ -88,15 +88,15 @@ AppStatus Player::Initialise()
 
 
 
-void Player::IncrScore(int n)
+void Enemy::IncrScore(int n)
 
 {
 
-	score = // MIRAR CANTIDAD DE SCORE DADA POR RL ENEMIGO Y SUMARSELA AL PLAYER
+	score = // MIRAR CANTIDAD DE SCORE DADA POR RL ENEMIGO Y SUMARSELA AL Enemy
 
 }
 
-int Player::GetScore()
+int Enemy::GetScore()
 
 {
 
@@ -146,7 +146,7 @@ bool Enemy::IsInSecondHalfTile() const
 
 }
 
-void Player::SetAnimation(int id)
+void Enemy::SetAnimation(int id)
 
 {
 
@@ -166,7 +166,7 @@ EnemyAnim Enemy::GetAnimation()
 
 }
 
-void Player::StartWalkingLeft()
+void Enemy::StartWalkingLeft()
 
 {
 
@@ -174,11 +174,11 @@ void Player::StartWalkingLeft()
 
 	look = Look::LEFT;
 
-	SetAnimation((int)PlayerAnim::WALKING_LEFT);
+	SetAnimation((int)EnemyAnim::WALKING_LEFT);
 
 }
 
-void Player::StartWalkingRight()
+void Enemy::StartWalkingRight()
 
 {
 
@@ -186,69 +186,12 @@ void Player::StartWalkingRight()
 
 	look = Look::RIGHT;
 
-	SetAnimation((int)PlayerAnim::WALKING_RIGHT);
+	SetAnimation((int)EnemyrAnim::WALKING_RIGHT);
 
 }
 
-void Player::StartFalling()
 
-{
-
-	dir.y = PLAYER_SPEED;
-
-	state = State::FALLING;
-
-	if (IsLookingRight())	SetAnimation((int)PlayerAnim::FALLING_RIGHT);
-
-	else					SetAnimation((int)PlayerAnim::FALLING_LEFT);
-
-}
-
-void Player::StartJumping()
-
-{
-
-	dir.y = -PLAYER_JUMP_FORCE;
-
-	state = State::JUMPING;
-
-	if (IsLookingRight())	SetAnimation((int)PlayerAnim::JUMPING_RIGHT);
-
-	else					SetAnimation((int)PlayerAnim::JUMPING_LEFT);
-
-	jump_delay = PLAYER_JUMP_DELAY;
-
-}
-
-void Player::StartClimbingUp()
-
-{
-
-	state = State::CLIMBING;
-
-	SetAnimation((int)PlayerAnim::CLIMBING);
-
-	Sprite* sprite = dynamic_cast<Sprite*>(render);
-
-	sprite->SetManualMode();
-
-}
-
-void Player::StartClimbingDown()
-
-{
-
-	state = State::CLIMBING;
-
-	SetAnimation((int)PlayerAnim::CLIMBING_TOP);
-
-	Sprite* sprite = dynamic_cast<Sprite*>(render);
-
-	sprite->SetManualMode();
-
-}
-
-void Player::ChangeAnimRight()
+void Enemy::ChangeAnimRight()
 
 {
 
@@ -258,19 +201,17 @@ void Player::ChangeAnimRight()
 
 	{
 
-		case State::IDLE:	 SetAnimation((int)PlayerAnim::IDLE_RIGHT);    break; 
+		case State::IDLE:	 SetAnimation((int)EnemyAnim::IDLE_RIGHT);    break; 
 
-		case State::WALKING: SetAnimation((int)PlayerAnim::WALKING_RIGHT); break;
+		case State::WALKING: SetAnimation((int)EnemyAnim::WALKING_RIGHT); break;
 
-		case State::JUMPING: SetAnimation((int)PlayerAnim::JUMPING_RIGHT); break;
-
-		case State::FALLING: SetAnimation((int)PlayerAnim::FALLING_RIGHT); break;
+		
 
 	}
 
 }
 
-void Player::ChangeAnimLeft()
+void Enemy::ChangeAnimLeft()
 
 {
 
@@ -280,23 +221,21 @@ void Player::ChangeAnimLeft()
 
 	{
 
-		case State::IDLE:	 SetAnimation((int)PlayerAnim::IDLE_LEFT);    break;
+		case State::IDLE: SetAnimation((int)EnemyAnim::IDLE_LEFT);    break;
 
-		case State::WALKING: SetAnimation((int)PlayerAnim::WALKING_LEFT); break;
+		case State::WALKING: SetAnimation((int)EnemyAnim::WALKING_LEFT); break;
 
-		case State::JUMPING: SetAnimation((int)PlayerAnim::JUMPING_LEFT); break;
-
-		case State::FALLING: SetAnimation((int)PlayerAnim::FALLING_LEFT); break;
+		
 
 	}
 
 }
 
-void Player::Update()
+void Enemy::Update()
 
 {
 
-	//Player doesn't use the "Entity::Update() { pos += dir; }" default behaviour.
+	//Enemy doesn't use the "Entity::Update() { pos += dir; }" default behaviour.
 
 	//Instead, uses an independent behaviour for each axis.
 
@@ -312,7 +251,7 @@ void Player::Update()
 
 }
 
-void Player::MoveX()
+void Enemy::MoveX()
 
 {
 
@@ -332,7 +271,7 @@ void Player::MoveX()
 
 	{
 
-		pos.x += -PLAYER_SPEED;
+		pos.x += -Enemy_SPEED;
 
 		if (state == State::IDLE) StartWalkingLeft();
 
@@ -364,7 +303,7 @@ void Player::MoveX()
 
 	{
 
-		pos.x += PLAYER_SPEED;
+		pos.x += Enemy_SPEED;
 
 		if (state == State::IDLE) StartWalkingRight();
 
@@ -402,7 +341,7 @@ void Player::MoveX()
 
 }
 
-void Player::MoveY()
+void Enemy::MoveY()
 
 {
 
@@ -430,7 +369,7 @@ void Player::MoveY()
 
 	{
 
-		pos.y += PLAYER_SPEED;
+		pos.y += Enemy_SPEED;
 
 		box = GetHitbox();
 
@@ -472,7 +411,7 @@ void Player::MoveY()
 
 					StartClimbingDown();
 
-					pos.y += PLAYER_LADDER_SPEED;
+					pos.y += Enemy_LADDER_SPEED;
 
 				}
 
@@ -502,7 +441,7 @@ void Player::MoveY()
 
 }
 
-void Player::LogicJumping()
+void Enemy::LogicJumping()
 
 {
 
@@ -528,17 +467,17 @@ void Player::LogicJumping()
 
 		dir.y += GRAVITY_FORCE;
 
-		jump_delay = PLAYER_JUMP_DELAY;
+		jump_delay = Enemy_JUMP_DELAY;
 
 
 
 		//Is the jump finished?
 
-		if (dir.y > PLAYER_JUMP_FORCE)
+		if (dir.y > Enemy_JUMP_FORCE)
 
 		{
 
-			dir.y = PLAYER_SPEED;
+			dir.y = Enemy_SPEED;
 
 			StartFalling();
 
@@ -554,9 +493,9 @@ void Player::LogicJumping()
 
 			{
 
-				if (IsLookingRight())	SetAnimation((int)PlayerAnim::JUMPING_RIGHT);
+				if (IsLookingRight())	SetAnimation((int)EnemyAnim::JUMPING_RIGHT);
 
-				else					SetAnimation((int)PlayerAnim::JUMPING_LEFT);
+				else					SetAnimation((int)EnemyAnim::JUMPING_LEFT);
 
 			}
 
@@ -564,9 +503,9 @@ void Player::LogicJumping()
 
 			{
 
-				if (IsLookingRight())	SetAnimation((int)PlayerAnim::LEVITATING_RIGHT);
+				if (IsLookingRight())	SetAnimation((int)EnemyAnim::LEVITATING_RIGHT);
 
-				else					SetAnimation((int)PlayerAnim::LEVITATING_LEFT);
+				else					SetAnimation((int)EnemyAnim::LEVITATING_LEFT);
 
 			}
 
@@ -574,9 +513,9 @@ void Player::LogicJumping()
 
 			{
 
-				if (IsLookingRight())	SetAnimation((int)PlayerAnim::FALLING_RIGHT);
+				if (IsLookingRight())	SetAnimation((int)EnemyAnim::FALLING_RIGHT);
 
-				else					SetAnimation((int)PlayerAnim::FALLING_LEFT);
+				else					SetAnimation((int)EnemyAnim::FALLING_LEFT);
 
 			}
 
@@ -616,7 +555,7 @@ void Player::LogicJumping()
 
 }
 
-void Player::LogicClimbing()
+void Enemy::LogicClimbing()
 
 {
 
@@ -632,7 +571,7 @@ void Player::LogicClimbing()
 
 	{
 
-		pos.y -= PLAYER_LADDER_SPEED;
+		pos.y -= Enemy_LADDER_SPEED;
 
 		sprite->NextFrame();
 
@@ -642,7 +581,7 @@ void Player::LogicClimbing()
 
 	{
 
-		pos.y += PLAYER_LADDER_SPEED;
+		pos.y += Enemy_LADDER_SPEED;
 
 		sprite->PrevFrame();
 
@@ -660,9 +599,9 @@ void Player::LogicClimbing()
 
 	{
 
-		if (IsInSecondHalfTile())		SetAnimation((int)PlayerAnim::CLIMBING_PRE_TOP);
+		if (IsInSecondHalfTile())		SetAnimation((int)EnemyAnim::CLIMBING_PRE_TOP);
 
-		else if (IsInFirstHalfTile())	SetAnimation((int)PlayerAnim::CLIMBING_TOP);
+		else if (IsInFirstHalfTile())	SetAnimation((int)EnemyAnim::CLIMBING_TOP);
 
 		else					LOG("Internal error, tile should be a LADDER_TOP, coord: (%d,%d)", box.pos.x, box.pos.y);
 
@@ -700,13 +639,13 @@ void Player::LogicClimbing()
 
 	{
 
-		if (GetAnimation() != PlayerAnim::CLIMBING)	SetAnimation((int)PlayerAnim::CLIMBING);
+		if (GetAnimation() != EnemyAnim::CLIMBING)	SetAnimation((int)EnemyAnim::CLIMBING);
 
 	}
 
 }
 
-void Player::DrawDebug(const Color& col) const
+void Enemy::DrawDebug(const Color& col) const
 
 {	
 
@@ -720,13 +659,13 @@ void Player::DrawDebug(const Color& col) const
 
 }
 
-void Player::Release()
+void Enemy::Release()
 
 {
 
 	ResourceManager& data = ResourceManager::Instance();
 
-	data.ReleaseTexture(Resource::IMG_PLAYER);
+	data.ReleaseTexture(Resource::IMG_Enemy);
 
 
 

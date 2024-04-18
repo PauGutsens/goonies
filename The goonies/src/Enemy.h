@@ -14,7 +14,7 @@ enum class Look { RIGHT, LEFT };
 
 //Rendering states
 
-enum class PlayerAnim {
+enum class EnemyAnim {
 
 	IDLE_LEFT, IDLE_RIGHT,
 	WALKING_LEFT, WALKING_RIGHT,

@@ -102,6 +102,9 @@ void Enemy::ChangeAnimLeft()
 		case State::WALKING: SetAnimation((int)EnemyAnim::WALKING_LEFT); break;
 	}
 }
+void Enemy::DealDamage();
+{
+	Player.life --1;
 void Enemy::Update()
 {
 
@@ -157,6 +160,7 @@ void Enemy::MoveX()
 
 
 		box = GetHitbox();
+	if (enemy->TestCollisionPlayer(box))DealDamage();
 	}
 
 }

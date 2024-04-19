@@ -1,7 +1,7 @@
 #include "Scene.h"
 #include <stdio.h>
 #include "Globals.h"
-
+#include Music.h
 Scene::Scene()
 {
 	player = nullptr;
@@ -94,7 +94,7 @@ AppStatus Scene::LoadLevel(int stage)
 	Point pos;
 	int *map = nullptr;
 	Object *obj;
-	
+	playMusic("//Ruta de la musica");
 	ClearLevel();
 
 	size = LEVEL_WIDTH * LEVEL_HEIGHT;

@@ -49,7 +49,19 @@ AppStatus Scene::Init()
 		LOG("Failed to initialise Player");
 		return AppStatus::ERROR;
 	}
-
+//Create enemy
+	enemy = new Enemy({ 20, 20 }, State::Walking, Look LEFT);
+	if (enemy == nullptr)
+	{
+		LOG("Failed to allocate memory for enemy");
+		return AppStatus::ERROR;
+	}
+	//Initialise enemy
+	if (enemy->Initialise() != AppStatus::OK)
+	{
+		LOG("Failed to initialise Enemy");
+		return AppStatus::ERROR;
+	}
 	//Create level 
     level = new TileMap();
     if (level == nullptr)
@@ -131,28 +143,7 @@ AppStatus Scene::LoadLevel(int stage)
 			10,   3,   4,  13,  14,  15,  16,  11,  12,  10,   7,   8,  10,   7,   8,  10,  13,  14,  15,  16,  11,  12,   3,   4,   10
 		};
 	}
-	else if (stage == 3)
-	{
-		map = new int[size] {
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 62, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 16, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 100, 0, 0, 0, 0, 16, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 16, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 16, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-		};
-	}
+
 	else
 	{
 		//Error level doesn't exist or incorrect level number
@@ -231,13 +222,14 @@ void Scene::Update()
 		debug = (DebugMode)(((int)debug + 1) % (int)DebugMode::SIZE);
 	}
 	//Debug levels instantly
-	if (IsKeyPressed(KEY_ONE))		LoadLevel(1);
-	else if (Player::GetScore == 200) LoadLevel(2);
-	else if (IsKeyPressed(KEY_THREE))	LoadLevel(3);
+	if (Player //HACER QUE SI SALE DE LA CAMARA DEL SEGUNDO NIVEL POR LA IZQUIERDA NIVEL O ESTA MUY POCO DE SALIR, SE CARGUE EL PRIMER NIVEL)		LoadLevel(1);
+	else if (Player //HACER QUE SI SALE DE LA CAMARA DEL PRIMER NIVEL POR LA DERECHA O ESTA MUY POCO DE SALIR, SE CARGUE EL SEGUNDO NIVEL) LoadLevel(2);
+	
 
 
 	level->Update();
 	player->Update();
+	enemy->Update();
 	CheckCollisions();
 }
 void Scene::Render()
@@ -278,6 +270,28 @@ void Scene::CheckCollisions()
 		if(player_box.TestAABB(obj_box))
 		{
 			player->IncrScore((*it)->Points());
+			
+			//Delete the object
+			delete* it; 
+			//Erase the object from the vector and get the iterator to the next valid element
+			it = objects.erase(it); 
+		}
+		else
+		{
+			//Move to the next object
+			++it; 
+		}
+	}
+	AABB enemy_box;
+	
+	enemy_box = enemy->GetHitbox();
+	auto it = objects.begin();
+	while (it != objects.end())
+	{
+		obj_box = (*it)->GetHitbox();
+		if(enemy_box.TestAABB(obj_box))
+		{
+			enemy->SetScore((*it)->Points());
 			
 			//Delete the object
 			delete* it; 

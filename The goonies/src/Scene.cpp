@@ -94,7 +94,10 @@ AppStatus Scene::LoadLevel(int stage)
 	Point pos;
 	int *map = nullptr;
 	Object *obj;
-	playMusic("//Ruta de la musica");
+	if( stage == 1 || stage == 2)
+	{
+		playMusic("//Ruta de la musica");
+	}
 	ClearLevel();
 
 	size = LEVEL_WIDTH * LEVEL_HEIGHT;

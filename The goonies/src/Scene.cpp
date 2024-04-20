@@ -96,7 +96,7 @@ AppStatus Scene::LoadLevel(int stage)
 	Object *obj;
 	if( stage == 1 || stage == 2)
 	{
-		playMusic("//Ruta de la musica");
+		playMusic("The goonies/Music/02 The Goonies 'R' Good Enough.ogg");
 	}
 	ClearLevel();
 
